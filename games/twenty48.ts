@@ -48,6 +48,25 @@ class Game2048 extends Phaser.Scene {
         if (!this.canMove()) this.gameOver();
       }
     });
+
+    // Touch / swipe controls for mobile
+    this.input.on("pointerup", (p: Phaser.Input.Pointer) => {
+      if (this.over) {
+        this.reset();
+        return;
+      }
+      const dx = p.x - p.downX;
+      const dy = p.y - p.downY;
+      if (Math.abs(dx) < 24 && Math.abs(dy) < 24) return;
+      let moved = false;
+      if (Math.abs(dx) > Math.abs(dy)) moved = this.move(dx > 0 ? "R" : "L");
+      else moved = this.move(dy > 0 ? "D" : "U");
+      if (moved) {
+        this.addTile();
+        this.render();
+        if (!this.canMove()) this.gameOver();
+      }
+    });
   }
 
   reset() {

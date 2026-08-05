@@ -55,7 +55,7 @@ export default function PhaserGame({ slug }: { slug: string }) {
       )}
       <div
         ref={hostRef}
-        className="mx-auto flex w-full max-w-[560px] justify-center [&_canvas]:rounded-xl [&_canvas]:shadow-2xl"
+        className="mx-auto flex w-full max-w-[560px] touch-none select-none justify-center [&_canvas]:h-auto [&_canvas]:max-w-full [&_canvas]:touch-none [&_canvas]:rounded-xl [&_canvas]:shadow-2xl"
       />
     </div>
   );

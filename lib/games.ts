@@ -44,7 +44,7 @@ export const GAMES: Game[] = [
       "The timeless snake, reborn in glowing neon. Eat orbs, grow longer, and don't bite your own tail.",
     about:
       "Neon Snake is a modern remake of the classic Snake arcade game that defined mobile gaming. Guide a glowing serpent around a neon grid, gobbling up orbs to grow ever longer. Every orb makes you faster and the board more crowded — how long can you survive before you crash into a wall or your own tail? It's simple to pick up, impossible to master, and perfect for a quick brain break.",
-    controls: "Arrow keys / WASD to steer",
+    controls: "Arrow keys / WASD · swipe on mobile",
     keywords: ["snake game", "neon snake", "play snake online", "classic snake", "retro arcade"],
     features: [
       "Instant play — no download or sign-up",
@@ -53,7 +53,7 @@ export const GAMES: Game[] = [
       "Works on desktop and mobile browsers",
     ],
     howToPlay: [
-      "Use the Arrow keys or WASD to change the snake's direction.",
+      "Use the Arrow keys or WASD — or swipe on a touch screen — to change direction.",
       "Steer into the pink orb to eat it and grow longer.",
       "Each orb adds 10 points and makes the snake a little faster.",
       "Avoid hitting the walls or your own body.",
@@ -224,7 +224,7 @@ export const GAMES: Game[] = [
       "Slide and merge matching tiles to chase the elusive 2048 tile on a slick neon board.",
     about:
       "2048 Fusion is a neon-styled version of the addictive number puzzle 2048. Slide tiles in four directions; when two tiles with the same number touch, they fuse into one worth double. Keep merging to build bigger and bigger numbers and reach the legendary 2048 tile — then push even further. Every move spawns a new tile, so plan carefully or the board fills up and it's game over.",
-    controls: "Arrow keys / WASD to slide tiles",
+    controls: "Arrow keys / WASD · swipe on mobile",
     keywords: ["2048 game", "play 2048 online", "number puzzle", "2048 fusion", "merge puzzle"],
     features: [
       "The classic 2048 sliding-tile puzzle",
@@ -233,7 +233,7 @@ export const GAMES: Game[] = [
       "Pure logic, no timer, no pressure",
     ],
     howToPlay: [
-      "Press an Arrow key or WASD to slide all tiles in that direction.",
+      "Press an Arrow key or WASD — or swipe on a touch screen — to slide all tiles.",
       "When two tiles with the same number collide, they merge into their sum.",
       "Each move adds a new 2 or 4 tile to the board.",
       "Combine tiles to reach 2048 — and keep going for a higher score.",

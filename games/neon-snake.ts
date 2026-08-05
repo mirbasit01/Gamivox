@@ -39,6 +39,23 @@ class SnakeScene extends Phaser.Scene {
       else if ((k === "arrowright" || k === "d") && this.dir.x === 0) this.nextDir = { x: 1, y: 0 };
       else if (k === " " && !this.alive) this.reset();
     });
+
+    // Touch / swipe controls for mobile
+    this.input.on("pointerup", (p: Phaser.Input.Pointer) => {
+      const dx = p.x - p.downX;
+      const dy = p.y - p.downY;
+      if (Math.abs(dx) < 24 && Math.abs(dy) < 24) {
+        if (!this.alive) this.reset();
+        return;
+      }
+      if (Math.abs(dx) > Math.abs(dy)) {
+        if (dx > 0 && this.dir.x === 0) this.nextDir = { x: 1, y: 0 };
+        else if (dx < 0 && this.dir.x === 0) this.nextDir = { x: -1, y: 0 };
+      } else {
+        if (dy > 0 && this.dir.y === 0) this.nextDir = { x: 0, y: 1 };
+        else if (dy < 0 && this.dir.y === 0) this.nextDir = { x: 0, y: -1 };
+      }
+    });
   }
 
   reset() {
