@@ -16,6 +16,10 @@ export function baseConfig(
     width,
     height,
     backgroundColor: "#0b0b14",
+    // None of the games use sound — disabling audio avoids creating an
+    // AudioContext (and the "Cannot suspend a closed AudioContext" error
+    // when a game is destroyed/reloaded).
+    audio: { noAudio: true },
     scale: {
       mode: Phaser.Scale.FIT,
       autoCenter: Phaser.Scale.CENTER_BOTH,
