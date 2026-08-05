@@ -59,26 +59,52 @@ export default function Home() {
           <section className="mb-12 grid gap-4 lg:grid-cols-[2fr_1fr]">
             <Link
               href={`/play/${featured.slug}`}
-              className="group relative flex min-h-[260px] items-end overflow-hidden rounded-3xl p-8"
+              className="group relative flex min-h-[320px] items-center overflow-hidden rounded-3xl p-8"
               style={{ background: featured.gradient }}
             >
-              <span className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-black/50 via-transparent to-white/10" />
+              {/* darkening + sheen */}
+              <span className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-black/60 via-black/10 to-white/10" />
+              {/* soft glow blobs */}
+              <span className="pointer-events-none absolute -right-10 -top-20 h-72 w-72 rounded-full bg-white/25 blur-3xl" />
+              <span className="pointer-events-none absolute -bottom-24 left-1/4 h-56 w-56 rounded-full bg-black/25 blur-3xl" />
+              {/* faded art for mobile background */}
               <GameArt
                 slug={featured.slug}
                 emoji={featured.emoji}
-                className="absolute right-6 top-4 w-40 opacity-95 drop-shadow-xl sm:w-48"
+                className="pointer-events-none absolute -right-4 bottom-0 w-44 opacity-25 sm:hidden"
               />
-              <div className="relative z-10 max-w-md">
-                <span className="mb-2 inline-block rounded-md bg-black/30 px-2 py-1 text-xs font-bold uppercase tracking-wide text-white">
-                  ⭐ Featured
+
+              {/* text */}
+              <div className="relative z-10 max-w-sm">
+                <span className="mb-3 inline-block rounded-md bg-black/40 px-2.5 py-1 text-xs font-bold uppercase tracking-wide text-white">
+                  ⭐ Featured Game
                 </span>
-                <h1 className="text-3xl font-black text-white drop-shadow md:text-4xl">
+                <h1 className="text-4xl font-black leading-none text-white drop-shadow-lg md:text-5xl">
                   {featured.title}
                 </h1>
-                <p className="mt-2 text-sm text-white/90">{featured.description}</p>
-                <span className="mt-4 inline-block rounded-full bg-white px-6 py-2.5 text-sm font-bold text-black transition-transform group-hover:scale-105">
+                <p className="mt-3 max-w-xs text-sm text-white/90">{featured.description}</p>
+                <span className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-bold text-black shadow-xl transition-transform group-hover:scale-105">
                   ▶ Play now
                 </span>
+              </div>
+
+              {/* framed game preview */}
+              <div
+                className="pointer-events-none absolute right-8 top-1/2 hidden -translate-y-1/2 sm:block"
+                style={{ animation: "floaty 4.5s ease-in-out infinite" }}
+              >
+                <div className="rotate-3 rounded-3xl bg-black/25 p-3 shadow-2xl ring-1 ring-white/25 backdrop-blur-sm transition-transform duration-300 group-hover:rotate-0">
+                  <div
+                    className="flex items-center justify-center rounded-2xl p-4"
+                    style={{ background: featured.gradient }}
+                  >
+                    <GameArt
+                      slug={featured.slug}
+                      emoji={featured.emoji}
+                      className="w-40 drop-shadow-xl lg:w-52"
+                    />
+                  </div>
+                </div>
               </div>
             </Link>
 
