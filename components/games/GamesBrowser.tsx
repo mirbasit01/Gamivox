@@ -28,7 +28,7 @@ export default function GamesBrowser() {
   return (
     <div>
       {/* Search */}
-      <div className="mb-6">
+      <div className="mb-5">
         <div className="relative mx-auto max-w-xl">
           <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-text-dim">
             🔍
@@ -37,20 +37,21 @@ export default function GamesBrowser() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search games…"
+            aria-label="Search games"
             className="w-full rounded-full border border-border bg-bg-elev py-3 pl-11 pr-4 text-sm text-text outline-none transition-colors focus:border-accent"
           />
         </div>
       </div>
 
       {/* Category tabs */}
-      <div className="mb-6 flex flex-wrap gap-2">
+      <div className="mb-6 flex flex-wrap justify-center gap-2">
         {tabs.map((t) => (
           <button
             key={t}
             onClick={() => setFilter(t)}
             className={`rounded-full px-4 py-1.5 text-sm font-semibold transition-colors ${
               filter === t
-                ? "bg-accent text-white"
+                ? "bg-accent text-white shadow-lg shadow-accent/30"
                 : "border border-border bg-bg-elev text-text-dim hover:text-text"
             }`}
           >
