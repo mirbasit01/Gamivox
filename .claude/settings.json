@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git commit -q -m 'Add 14 new Phaser games \\(20 total\\) with full SEO metadata *)",
+      "Bash(git push *)"
+    ]
+  }
+}
