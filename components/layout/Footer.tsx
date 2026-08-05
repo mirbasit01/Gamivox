@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Gamepad2 } from "lucide-react";
 import { CATEGORIES } from "@/lib/games";
 import { SITE } from "@/lib/site";
 
@@ -14,7 +15,10 @@ export default function Footer() {
           </Link>
         ))}
       </div>
-      <p>© {SITE.name} · Free online games · Developed by mirbasit01 🎮</p>
+      <p className="flex items-center justify-center gap-1.5">
+        <Gamepad2 className="h-4 w-4 text-accent" />
+        © {SITE.name} · Free online games · Developed by mirbasit01
+      </p>
     </footer>
   );
 }

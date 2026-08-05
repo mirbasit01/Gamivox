@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { Gamepad2, Star, Play } from "lucide-react";
 import Sidebar from "@/components/layout/Sidebar";
 import Footer from "@/components/layout/Footer";
 import GamesBrowser from "@/components/games/GamesBrowser";
@@ -46,8 +47,9 @@ export default function Home() {
       <main className="flex-1">
         {/* Mobile top bar */}
         <header className="sticky top-0 z-20 flex items-center justify-between border-b border-border-soft bg-bg/80 px-5 py-4 backdrop-blur md:hidden">
-          <Link href="/" className="text-lg font-black">
-            <span className="gradient-text">Gamivox</span> 🎮
+          <Link href="/" className="flex items-center gap-1.5 text-lg font-black">
+            <Gamepad2 className="h-5 w-5 text-accent" />
+            <span className="gradient-text">Gamivox</span>
           </Link>
           <Link href="/guide" className="text-sm text-text-dim">
             How to Play
@@ -76,15 +78,15 @@ export default function Home() {
 
               {/* text */}
               <div className="relative z-10 max-w-sm">
-                <span className="mb-3 inline-block rounded-md bg-black/40 px-2.5 py-1 text-xs font-bold uppercase tracking-wide text-white">
-                  ⭐ Featured Game
+                <span className="mb-3 inline-flex items-center gap-1.5 rounded-md bg-black/40 px-2.5 py-1 text-xs font-bold uppercase tracking-wide text-white">
+                  <Star className="h-3.5 w-3.5 fill-white" /> Featured Game
                 </span>
                 <h1 className="text-4xl font-black leading-none text-white drop-shadow-lg md:text-5xl">
                   {featured.title}
                 </h1>
                 <p className="mt-3 max-w-xs text-sm text-white/90">{featured.description}</p>
                 <span className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-bold text-black shadow-xl transition-transform group-hover:scale-105">
-                  ▶ Play now
+                  <Play className="h-4 w-4 fill-black" /> Play now
                 </span>
               </div>
 

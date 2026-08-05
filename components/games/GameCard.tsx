@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Play } from "lucide-react";
 import type { Game } from "@/lib/games";
 import GameArt from "./GameArt";
 
@@ -24,8 +25,8 @@ export default function GameCard({ game, large = false }: { game: Game; large?: 
           {game.category}
         </span>
         <span className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 backdrop-blur-[2px] transition-opacity duration-200 group-hover:opacity-100">
-          <span className="rounded-full bg-white px-5 py-2 text-sm font-bold text-black shadow-lg">
-            ▶ Play
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-5 py-2 text-sm font-bold text-black shadow-lg">
+            <Play className="h-4 w-4 fill-black" /> Play
           </span>
         </span>
       </div>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { Gamepad2 } from "lucide-react";
 import { CATEGORIES, gamesByCategory, type Category } from "@/lib/games";
 import { SITE, absUrl } from "@/lib/site";
 import Sidebar from "@/components/layout/Sidebar";
@@ -65,7 +66,9 @@ export default async function CategoryPage({
       <main className="flex-1">
         <div className="mx-auto max-w-6xl px-5 py-10 sm:px-8">
           <nav aria-label="Breadcrumb" className="mb-4 text-sm text-text-dim">
-            <Link href="/" className="font-bold text-text hover:text-accent">🎮 {SITE.name}</Link>
+            <Link href="/" className="inline-flex items-center gap-1.5 font-bold text-text hover:text-accent">
+              <Gamepad2 className="h-4 w-4 text-accent" /> {SITE.name}
+            </Link>
             <span className="mx-2">/</span>
             <span className="text-text">{category} Games</span>
           </nav>

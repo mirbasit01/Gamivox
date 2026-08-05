@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { Search } from "lucide-react";
 import { CATEGORIES, GAMES, type Category } from "@/lib/games";
 import GameCard from "./GameCard";
 
@@ -30,9 +31,8 @@ export default function GamesBrowser() {
       {/* Search */}
       <div className="mb-5">
         <div className="relative mx-auto max-w-xl">
-          <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-text-dim">
-            🔍
-          </span>
+          <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-text-dim" />
+
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}

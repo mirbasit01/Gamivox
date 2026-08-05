@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { Gamepad2, ArrowLeft, Lightbulb } from "lucide-react";
 import { GAMES, getGame } from "@/lib/games";
 import { SITE, absUrl } from "@/lib/site";
+import GameArt from "@/components/games/GameArt";
 import GameCard from "@/components/games/GameCard";
 import GameStage from "@/components/games/GameStage";
 import Footer from "@/components/layout/Footer";
@@ -88,7 +90,9 @@ export default async function PlayPage({
       <div className="mx-auto max-w-5xl px-5 py-6 sm:px-8">
         {/* breadcrumb */}
         <nav aria-label="Breadcrumb" className="mb-4 flex flex-wrap items-center gap-2 text-sm text-text-dim">
-          <Link href="/" className="font-bold text-text hover:text-accent">🎮 {SITE.name}</Link>
+          <Link href="/" className="inline-flex items-center gap-1.5 font-bold text-text hover:text-accent">
+            <Gamepad2 className="h-4 w-4 text-accent" /> {SITE.name}
+          </Link>
           <span>/</span>
           <Link href={`/category/${game.category.toLowerCase()}`} className="hover:text-accent">
             {game.category}
@@ -104,17 +108,24 @@ export default async function PlayPage({
         >
           <div className="mb-4 flex items-center justify-between gap-3">
             <div className="flex items-center gap-3">
-              <span className="text-3xl">{game.emoji}</span>
+              <span
+                className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl"
+                style={{ background: game.gradient }}
+              >
+                <GameArt slug={game.slug} emoji={game.emoji} className="w-9" />
+              </span>
               <div>
                 <h1 className="text-xl font-black leading-tight sm:text-2xl">{game.title}</h1>
-                <p className="text-xs text-text-dim">🎮 {game.controls}</p>
+                <p className="flex items-center gap-1.5 text-xs text-text-dim">
+                  <Gamepad2 className="h-3.5 w-3.5" /> {game.controls}
+                </p>
               </div>
             </div>
             <Link
               href="/"
-              className="shrink-0 rounded-full border border-border px-4 py-1.5 text-sm font-semibold text-text-dim hover:text-text"
+              className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-border px-4 py-1.5 text-sm font-semibold text-text-dim hover:text-text"
             >
-              ← Back
+              <ArrowLeft className="h-4 w-4" /> Back
             </Link>
           </div>
 
@@ -166,7 +177,7 @@ export default async function PlayPage({
               <ul className="space-y-2">
                 {game.tips.map((tip, i) => (
                   <li key={i} className="flex gap-2 text-sm text-text-dim">
-                    <span>💡</span>
+                    <Lightbulb className="mt-0.5 h-4 w-4 shrink-0" style={{ color: game.accent }} />
                     <span>{tip}</span>
                   </li>
                 ))}

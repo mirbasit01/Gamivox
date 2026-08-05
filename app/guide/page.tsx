@@ -1,9 +1,19 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import {
+  Gamepad2,
+  MousePointerClick,
+  Zap,
+  Trophy,
+  Lightbulb,
+  ArrowRight,
+  type LucideIcon,
+} from "lucide-react";
 import { GAMES } from "@/lib/games";
 import { SITE, absUrl } from "@/lib/site";
 import Sidebar from "@/components/layout/Sidebar";
 import Footer from "@/components/layout/Footer";
+import GameArt from "@/components/games/GameArt";
 import JsonLd from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
@@ -20,11 +30,11 @@ export const metadata: Metadata = {
   },
 };
 
-const STEPS = [
-  { icon: "🕹️", title: "Pick a game", text: "Browse the home page or a category and click any game card." },
-  { icon: "⚡", title: "It loads instantly", text: "The game runs right in your browser — no download, install or account needed." },
-  { icon: "🎮", title: "Read the controls", text: "Each game page shows its controls and a step-by-step 'How to Play' section." },
-  { icon: "🏆", title: "Beat your high score", text: "Most games are score-based. Restart anytime and try to do better." },
+const STEPS: { icon: LucideIcon; title: string; text: string }[] = [
+  { icon: MousePointerClick, title: "Pick a game", text: "Browse the home page or a category and click any game card." },
+  { icon: Zap, title: "It loads instantly", text: "The game runs right in your browser — no download, install or account needed." },
+  { icon: Gamepad2, title: "Read the controls", text: "Each game page shows its controls and a step-by-step 'How to Play' section." },
+  { icon: Trophy, title: "Beat your high score", text: "Most games are score-based. Restart anytime and try to do better." },
 ];
 
 const GENERAL_FAQ = [
@@ -82,7 +92,9 @@ export default function GuidePage() {
         <div className="mx-auto max-w-3xl px-5 py-10 sm:px-8">
           {/* header */}
           <nav aria-label="Breadcrumb" className="mb-4 text-sm text-text-dim">
-            <Link href="/" className="font-bold text-text hover:text-accent">🎮 {SITE.name}</Link>
+            <Link href="/" className="inline-flex items-center gap-1.5 font-bold text-text hover:text-accent">
+              <Gamepad2 className="h-4 w-4 text-accent" /> {SITE.name}
+            </Link>
             <span className="mx-2">/</span>
             <span className="text-text">How to Play</span>
           </nav>
@@ -102,7 +114,7 @@ export default function GuidePage() {
             <div className="grid gap-4 sm:grid-cols-2">
               {STEPS.map((s, i) => (
                 <div key={i} className="rounded-2xl border border-border bg-bg-elev/60 p-5">
-                  <div className="mb-2 text-2xl">{s.icon}</div>
+                  <s.icon className="mb-2 h-7 w-7 text-accent" />
                   <h3 className="font-bold">
                     {i + 1}. {s.title}
                   </h3>
@@ -128,8 +140,14 @@ export default function GuidePage() {
                   {GAMES.map((g) => (
                     <tr key={g.slug} className="border-t border-border-soft">
                       <td className="px-4 py-3">
-                        <Link href={`/play/${g.slug}`} className="font-semibold text-text hover:text-accent">
-                          {g.emoji} {g.title}
+                        <Link href={`/play/${g.slug}`} className="inline-flex items-center gap-2 font-semibold text-text hover:text-accent">
+                          <span
+                            className="inline-flex h-6 w-6 shrink-0 items-center justify-center overflow-hidden rounded"
+                            style={{ background: g.gradient }}
+                          >
+                            <GameArt slug={g.slug} emoji={g.emoji} className="w-5" />
+                          </span>
+                          {g.title}
                         </Link>
                       </td>
                       <td className="px-4 py-3 text-text-dim">{g.category}</td>
@@ -145,10 +163,17 @@ export default function GuidePage() {
           <section className="mt-12">
             <h2 className="mb-4 text-xl font-black">Beginner Tips</h2>
             <ul className="space-y-2 text-sm text-text-dim">
-              <li className="flex gap-2"><span>💡</span> Start with easy games like 2048 Fusion or Color Memory to warm up.</li>
-              <li className="flex gap-2"><span>💡</span> Each game page has a dedicated “How to Play” and “Tips &amp; Tricks” section — read it first.</li>
-              <li className="flex gap-2"><span>💡</span> Use the fullscreen button on the game stage for a bigger, more immersive view.</li>
-              <li className="flex gap-2"><span>💡</span> Most games restart instantly after a game over, so don't be afraid to fail fast and learn.</li>
+              {[
+                "Start with easy games like 2048 Fusion or Color Memory to warm up.",
+                "Each game page has a dedicated “How to Play” and “Tips & Tricks” section — read it first.",
+                "Use the fullscreen button on the game stage for a bigger, more immersive view.",
+                "Most games restart instantly after a game over, so don't be afraid to fail fast and learn.",
+              ].map((tip, i) => (
+                <li key={i} className="flex gap-2">
+                  <Lightbulb className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                  <span>{tip}</span>
+                </li>
+              ))}
             </ul>
           </section>
 
@@ -169,9 +194,9 @@ export default function GuidePage() {
             <p className="text-lg font-bold">Ready to play?</p>
             <Link
               href="/#all-games"
-              className="mt-3 inline-block rounded-full bg-accent px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-accent/30 hover:brightness-110"
+              className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-accent px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-accent/30 hover:brightness-110"
             >
-              Browse all games →
+              Browse all games <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </div>
