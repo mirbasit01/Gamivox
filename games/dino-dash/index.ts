@@ -1,5 +1,5 @@
 import * as Phaser from "phaser";
-import { baseConfig, hudText, type CreateGame } from "./_shared";
+import { baseConfig, hudText, type CreateGame } from "../_shared";
 
 const W = 640;
 const H = 300;
