@@ -163,9 +163,9 @@ export default function Home() {
               collection spans <strong className="text-text">arcade</strong>,{" "}
               <strong className="text-text">action</strong>,{" "}
               <strong className="text-text">puzzle</strong> and{" "}
-              <strong className="text-text">classic</strong> games, all built with
-              modern HTML5 technology so they run smoothly on desktop, tablet and
-              mobile. Whether you want a quick five-minute break or a high-score
+              <strong className="text-text">classic</strong> games that run
+              smoothly on desktop, tablet and mobile. Whether you want a quick
+              five-minute break or a high-score
               challenge, there's something here for you. New to a game? Check out
               our <Link href="/guide" className="text-accent hover:underline">how-to-play guide</Link>{" "}
               for controls and tips.

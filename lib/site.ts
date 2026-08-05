@@ -9,7 +9,7 @@ export const SITE = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://gamivox-green.vercel.app",
   tagline: "Play Free Online Games — No Download, No Install",
   description:
-    "Gamivox is a free online games portal. Play browser games instantly — arcade, action, puzzle and classic games built with modern web tech. No downloads, no sign-up.",
+    "Gamivox is a free online games portal. Play browser games instantly — arcade, action, puzzle and classic games. No downloads, no sign-up.",
   locale: "en_US",
   twitter: "@gamivox",
   keywords: [

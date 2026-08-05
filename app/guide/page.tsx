@@ -49,7 +49,7 @@ const STEPS: { icon: LucideIcon; title: string; text: string }[] = [
 const GENERAL_FAQ = [
   {
     q: "Do I need to download or install anything?",
-    a: "No. Every game on Gamivox runs directly in your web browser using HTML5. Just click a game and play.",
+    a: "No. Every game on Gamivox runs directly in your web browser. Just click a game and play.",
   },
   {
     q: "Are the games really free?",
