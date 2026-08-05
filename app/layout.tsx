@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SITE } from "@/lib/site";
+import ServiceWorkerRegister from "@/components/pwa/ServiceWorkerRegister";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -30,6 +31,12 @@ export const metadata: Metadata = {
   keywords: [...SITE.keywords],
   applicationName: SITE.name,
   authors: [{ name: SITE.name }],
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: SITE.name,
+  },
   alternates: { canonical: "/" },
   openGraph: {
     siteName: SITE.name,
@@ -61,6 +68,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
+        <ServiceWorkerRegister />
       </body>
     </html>
   );
