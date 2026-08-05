@@ -39,7 +39,7 @@ export default function Sidebar() {
 
         <div className="my-3 h-px bg-border-soft" />
         <p className="px-3 text-xs leading-relaxed text-text-dim">
-          Free browser games — no download, no sign-up. Built with Next.js + Phaser.
+          Free browser games — no download, no sign-up. Developed by mirbasit01.
         </p>
       </div>
     </aside>

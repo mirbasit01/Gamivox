@@ -14,7 +14,7 @@ export default function Footer() {
           </Link>
         ))}
       </div>
-      <p>© {SITE.name} · Free online games built with Next.js + Phaser 🎮</p>
+      <p>© {SITE.name} · Free online games · Developed by mirbasit01 🎮</p>
     </footer>
   );
 }
