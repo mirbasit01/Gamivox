@@ -4,6 +4,7 @@ import Sidebar from "@/components/layout/Sidebar";
 import Footer from "@/components/layout/Footer";
 import GamesBrowser from "@/components/games/GamesBrowser";
 import GameCard from "@/components/games/GameCard";
+import GameArt from "@/components/games/GameArt";
 import JsonLd from "@/components/seo/JsonLd";
 import { CATEGORIES, GAMES, gamesByCategory } from "@/lib/games";
 import { SITE, absUrl } from "@/lib/site";
@@ -62,12 +63,11 @@ export default function Home() {
               style={{ background: featured.gradient }}
             >
               <span className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-black/50 via-transparent to-white/10" />
-              <span
-                className="absolute right-8 top-6 text-8xl opacity-90"
-                style={{ animation: "floaty 4s ease-in-out infinite" }}
-              >
-                {featured.emoji}
-              </span>
+              <GameArt
+                slug={featured.slug}
+                emoji={featured.emoji}
+                className="absolute right-6 top-4 w-40 opacity-95 drop-shadow-xl sm:w-48"
+              />
               <div className="relative z-10 max-w-md">
                 <span className="mb-2 inline-block rounded-md bg-black/30 px-2 py-1 text-xs font-bold uppercase tracking-wide text-white">
                   ⭐ Featured

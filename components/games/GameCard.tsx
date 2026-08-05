@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Game } from "@/lib/games";
+import GameArt from "./GameArt";
 
 export default function GameCard({ game, large = false }: { game: Game; large?: boolean }) {
   return (
@@ -14,12 +15,11 @@ export default function GameCard({ game, large = false }: { game: Game; large?: 
       >
         {/* sheen */}
         <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-white/10" />
-        <span
-          className={`${large ? "text-7xl" : "text-5xl"} drop-shadow-lg transition-transform duration-300 group-hover:scale-110`}
-          style={{ animation: "floaty 3.6s ease-in-out infinite" }}
-        >
-          {game.emoji}
-        </span>
+        <GameArt
+          slug={game.slug}
+          emoji={game.emoji}
+          className={`${large ? "w-[64%]" : "w-[72%]"} drop-shadow-lg transition-transform duration-300 group-hover:scale-105`}
+        />
         <span className="absolute left-2 top-2 rounded-md bg-black/40 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white/90 backdrop-blur">
           {game.category}
         </span>
