@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Next-App-16",
-  description: "boilerplate code next app",
+  title: "Gamivox · Play Free Online Games",
+  description: "A neon arcade of free browser games built with Next.js + Phaser.",
 };
 
 export default function RootLayout({
