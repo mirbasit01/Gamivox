@@ -9,7 +9,7 @@ import {
   ArrowRight,
   type LucideIcon,
 } from "lucide-react";
-import { GAMES } from "@/lib/games";
+import { GAMES, CATEGORIES, gamesByCategory } from "@/lib/games";
 import { SITE, absUrl } from "@/lib/site";
 import Sidebar from "@/components/layout/Sidebar";
 import Footer from "@/components/layout/Footer";
@@ -17,10 +17,19 @@ import GameArt from "@/components/games/GameArt";
 import JsonLd from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: `How to Play — Getting Started Guide | ${SITE.name}`,
+  title: `How to Play Free Online Games — Beginner's Guide | ${SITE.name}`,
   description:
-    "New to Gamivox? Learn how to play our free online games, understand the controls for every game, and get beginner tips in this quick getting-started guide.",
-  keywords: ["how to play", "gamivox guide", "game controls", "getting started", "beginner guide"],
+    "New to Gamivox? Learn how to play free online games in your browser — no download needed. Controls for all 20 games, beginner tips, and answers to common questions about our arcade, action, puzzle and classic games.",
+  keywords: [
+    "how to play online games",
+    "free online games guide",
+    "play games without download",
+    "browser games how to play",
+    "game controls",
+    "gamivox guide",
+    "beginner games guide",
+    "best free browser games",
+  ],
   alternates: { canonical: "/guide" },
   openGraph: {
     title: `How to Play — Getting Started Guide | ${SITE.name}`,
@@ -58,6 +67,22 @@ const GENERAL_FAQ = [
     q: "Which browser works best?",
     a: "Any up-to-date browser (Chrome, Edge, Firefox, Safari) works great. For the smoothest experience, keep your browser updated.",
   },
+  {
+    q: "What are the best free online games on Gamivox?",
+    a: "Gamivox has 20 free games across four categories. Popular picks include Neon Snake, 2048 Fusion and Flappy Orb for quick fun, plus classics like Tic-Tac-Toe, Pong Duel and Connect Four you can play against the computer.",
+  },
+  {
+    q: "What types of games can I play?",
+    a: "We have Arcade games (fast, casual fun), Action games (shooting and reflex challenges), Puzzle games (2048, Minesweeper, Sliding Puzzle, Memory Match) and Classic games (Snake, Tic-Tac-Toe, Pong, Connect Four).",
+  },
+  {
+    q: "Can I play two-player or against the computer?",
+    a: "Several games — Tic-Tac-Toe, Pong Duel and Connect Four — let you play against a built-in computer opponent. The rest are single-player high-score challenges.",
+  },
+  {
+    q: "How do I play games in fullscreen?",
+    a: "Open any game and press the Fullscreen button on the game stage. It fills your whole screen on desktop and mobile; press Esc to exit.",
+  },
 ];
 
 export default function GuidePage() {
@@ -81,11 +106,23 @@ export default function GuidePage() {
       text: s.text,
     })),
   };
+  const itemListLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: `All ${GAMES.length} free games on ${SITE.name}`,
+    itemListElement: GAMES.map((g, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: absUrl(`/play/${g.slug}`),
+      name: g.title,
+    })),
+  };
 
   return (
     <div className="flex min-h-screen">
       <JsonLd data={faqLd} />
       <JsonLd data={howToLd} />
+      <JsonLd data={itemListLd} />
       <Sidebar />
 
       <main className="flex-1">
@@ -175,6 +212,36 @@ export default function GuidePage() {
                 </li>
               ))}
             </ul>
+          </section>
+
+          {/* Browse all games by category (internal links for SEO + discovery) */}
+          <section className="mt-12">
+            <h2 className="mb-2 text-xl font-black">All {GAMES.length} Free Games by Category</h2>
+            <p className="mb-4 text-sm text-text-dim">
+              Jump straight into any of our free online games — no download, no sign-up.
+            </p>
+            <div className="space-y-5">
+              {CATEGORIES.map((cat) => (
+                <div key={cat}>
+                  <h3 className="mb-2 text-sm font-bold uppercase tracking-wide text-accent">
+                    <Link href={`/category/${cat.toLowerCase()}`} className="hover:underline">
+                      {cat} Games
+                    </Link>
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {gamesByCategory(cat).map((g) => (
+                      <Link
+                        key={g.slug}
+                        href={`/play/${g.slug}`}
+                        className="rounded-full border border-border bg-bg-elev/60 px-3 py-1.5 text-sm font-medium text-text-dim transition-colors hover:border-accent hover:text-text"
+                      >
+                        {g.title}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
           </section>
 
           {/* FAQ */}

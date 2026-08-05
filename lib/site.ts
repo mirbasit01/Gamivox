@@ -4,8 +4,9 @@
  */
 export const SITE = {
   name: "Gamivox",
-  // ⚠️ Change this to your production domain (used for SEO / sitemap / OG tags).
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://gamivox.example.com",
+  // Production domain (used for SEO / sitemap / canonical / OG tags).
+  // Override with NEXT_PUBLIC_SITE_URL if you add a custom domain later.
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://gamivox-green.vercel.app",
   tagline: "Play Free Online Games — No Download, No Install",
   description:
     "Gamivox is a free online games portal. Play browser games instantly — arcade, action, puzzle and classic games built with modern web tech. No downloads, no sign-up.",
