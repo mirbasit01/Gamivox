@@ -1,35 +1,58 @@
 import type { CreateGame } from "./_shared";
 
-/**
- * Lazy loaders — each entry dynamically imports a Phaser game module.
- * Phaser only loads in the browser (these are called from a client component).
- */
 export const gameLoaders: Record<string, () => Promise<{ createGame: CreateGame }>> = {
-  // Original six
+  // Original 20
   "neon-snake": () => import("./neon-snake"),
   "flappy-orb": () => import("./flappy-orb"),
   "brick-blaster": () => import("./brick-blaster"),
   "star-fighter": () => import("./star-fighter"),
   twenty48: () => import("./twenty48"),
   "color-memory": () => import("./color-memory"),
-  // Classic
   "tic-tac-toe": () => import("./tic-tac-toe"),
   "pong-duel": () => import("./pong-duel"),
   "connect-four": () => import("./connect-four"),
-  // Puzzle
   "memory-match": () => import("./memory-match"),
   minesweeper: () => import("./minesweeper"),
   "sliding-puzzle": () => import("./sliding-puzzle"),
   "block-drop": () => import("./block-drop"),
-  // Arcade
   "dino-dash": () => import("./dino-dash"),
   "sky-jumper": () => import("./sky-jumper"),
   "whack-a-mole": () => import("./whack-a-mole"),
   "road-crossing": () => import("./road-crossing"),
-  // Action
   "asteroid-field": () => import("./asteroid-field"),
   "turret-gunner": () => import("./turret-gunner"),
   "maze-escape": () => import("./maze-escape"),
+  // New 30
+  "bubble-shooter": () => import("./bubble-shooter"),
+  "coin-dash": () => import("./coin-dash"),
+  "tap-beat": () => import("./tap-beat"),
+  "balloon-pop": () => import("./balloon-pop"),
+  "laser-dodge": () => import("./laser-dodge"),
+  "penguin-jump": () => import("./penguin-jump"),
+  "fruit-slicer": () => import("./fruit-slicer"),
+  "speed-typer": () => import("./speed-typer"),
+  "tank-battle": () => import("./tank-battle"),
+  "ninja-slash": () => import("./ninja-slash"),
+  "zombie-wave": () => import("./zombie-wave"),
+  "gravity-flip": () => import("./gravity-flip"),
+  "bullet-hell": () => import("./bullet-hell"),
+  "tower-defense": () => import("./tower-defense"),
+  "space-miner": () => import("./space-miner"),
+  "sudoku-lite": () => import("./sudoku-lite"),
+  "word-scramble": () => import("./word-scramble"),
+  "pipe-connect": () => import("./pipe-connect"),
+  "light-reflector": () => import("./light-reflector"),
+  "gem-swap": () => import("./gem-swap"),
+  "chain-reaction": () => import("./chain-reaction"),
+  "number-sort": () => import("./number-sort"),
+  "color-flood": () => import("./color-flood"),
+  checkers: () => import("./checkers"),
+  battleship: () => import("./battleship"),
+  hangman: () => import("./hangman"),
+  blackjack: () => import("./blackjack"),
+  "rock-paper-scissors": () => import("./rock-paper-scissors"),
+  "simon-says": () => import("./simon-says"),
+  "dice-roller": () => import("./dice-roller"),
 };
 
 export function hasGame(slug: string): boolean {

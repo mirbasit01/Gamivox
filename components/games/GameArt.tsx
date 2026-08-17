@@ -3,6 +3,7 @@ import { setA } from "./art/set-a";
 import { setB } from "./art/set-b";
 import { setC } from "./art/set-c";
 import { setD } from "./art/set-d";
+import { setE } from "./art/set-e";
 
 /**
  * Per-game vector illustration drawn on top of the card's gradient.
@@ -14,6 +15,7 @@ const ART: Record<string, ReactElement> = {
   ...setB,
   ...setC,
   ...setD,
+  ...setE,
 };
 
 export default function GameArt({

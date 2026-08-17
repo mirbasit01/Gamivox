@@ -31,6 +31,36 @@ export type Game = {
   players: string;
 };
 
+function makeGame(
+  slug: string,
+  title: string,
+  category: Category,
+  emoji: string,
+  description: string,
+  controls: string,
+): Game {
+  const styles: Record<Category, { gradient: string; accent: string }> = {
+    Arcade: { gradient: "linear-gradient(135deg,#6d5cff 0%,#2186d6 52%,#06b6c8 100%)", accent: "#38bdf8" },
+    Action: { gradient: "linear-gradient(135deg,#24124a 0%,#6d3dd1 54%,#e1438a 100%)", accent: "#f472b6" },
+    Puzzle: { gradient: "linear-gradient(135deg,#12b6c7 0%,#2563c9 52%,#6d44d4 100%)", accent: "#38bdf8" },
+    Classic: { gradient: "linear-gradient(135deg,#f59e59 0%,#e64a66 55%,#843e9d 100%)", accent: "#fb7185" },
+  };
+  const style = styles[category];
+  return {
+    slug, title, category, emoji, description, controls,
+    tags: [category.toLowerCase(), "browser game", "free game"],
+    gradient: style.gradient,
+    accent: style.accent,
+    about: `${title} is a free ${category.toLowerCase()} game you can play instantly in your browser. ${description}`,
+    keywords: [title.toLowerCase(), `${category.toLowerCase()} game`, "free browser game"],
+    features: ["Play instantly in your browser", "Designed for desktop and mobile", "Quick, replayable game sessions"],
+    howToPlay: ["Start a new round.", controls, "Keep playing to improve your score."],
+    tips: ["Take a moment to learn the controls.", "Practice short rounds to improve your score."],
+    faq: [{ q: `Is ${title} free to play?`, a: `Yes. ${title} is free to play in your browser with no download required.` }],
+    players: "1 player",
+  };
+}
+
 export const GAMES: Game[] = [
   {
     slug: "neon-snake",
@@ -916,6 +946,38 @@ export const GAMES: Game[] = [
     ],
     players: "1 player",
   },
+  ...[
+    makeGame("bubble-shooter", "Bubble Shooter", "Arcade", "🫧", "Aim coloured bubbles, match groups of three, and clear the board.", "Mouse or touch to aim and shoot"),
+    makeGame("coin-dash", "Coin Dash", "Arcade", "🪙", "Collect coins while weaving away from roaming hazards.", "Arrow keys / WASD"),
+    makeGame("tap-beat", "Tap Tap Beat", "Arcade", "🎵", "Hit incoming notes on time and build your combo.", "Arrow keys / A S D F"),
+    makeGame("balloon-pop", "Balloon Pop", "Arcade", "🎈", "Pop balloons before they float away.", "Click / tap balloons"),
+    makeGame("laser-dodge", "Laser Dodge", "Arcade", "🔺", "Survive an accelerating field of neon lasers.", "Arrow keys / WASD"),
+    makeGame("penguin-jump", "Penguin Jump", "Arcade", "🐧", "Bounce from icy platform to icy platform and climb higher.", "Arrow keys / A D"),
+    makeGame("fruit-slicer", "Fruit Slicer", "Arcade", "🍉", "Slice flying fruit with fast, accurate swipes.", "Mouse drag / touch swipe"),
+    makeGame("speed-typer", "Speed Typer", "Arcade", "⌨️", "Type each word accurately before the timer runs out.", "Keyboard"),
+    makeGame("tank-battle", "Tank Battle", "Action", "🛡️", "Drive, aim, and blast enemy tanks across the battlefield.", "Arrow keys / WASD · mouse to aim and fire"),
+    makeGame("ninja-slash", "Ninja Slash", "Action", "🥷", "Slash incoming enemies before they reach your ninja.", "Mouse drag / touch swipe"),
+    makeGame("zombie-wave", "Zombie Wave", "Action", "🧟", "Hold the line against increasingly dangerous zombie waves.", "Arrow keys / WASD · mouse to aim and fire"),
+    makeGame("gravity-flip", "Gravity Flip", "Action", "🔄", "Flip gravity at the right moment to clear each obstacle.", "Space / click / tap"),
+    makeGame("bullet-hell", "Bullet Hell", "Action", "💥", "Dodge dense patterns of enemy fire for as long as possible.", "Arrow keys / WASD"),
+    makeGame("tower-defense", "Tower Defense", "Action", "🏰", "Place turrets and stop enemies before they reach the exit.", "Click / tap to place towers"),
+    makeGame("space-miner", "Space Miner", "Action", "⛏️", "Mine ore in deep space while avoiding dangerous asteroids.", "Arrow keys / WASD"),
+    makeGame("sudoku-lite", "Sudoku Lite", "Puzzle", "🔢", "Complete a compact number grid using logic alone.", "Click a cell, then press a number key"),
+    makeGame("word-scramble", "Word Scramble", "Puzzle", "🔤", "Unscramble as many words as you can before time runs out.", "Keyboard"),
+    makeGame("pipe-connect", "Pipe Connect", "Puzzle", "🧩", "Rotate pipes until every section forms one connected network.", "Click / tap pipes"),
+    makeGame("light-reflector", "Light Reflector", "Puzzle", "🔦", "Rotate mirrors to direct a beam of light through every target.", "Click / tap mirrors"),
+    makeGame("gem-swap", "Gem Swap", "Puzzle", "💎", "Swap adjacent gems to make colourful matches.", "Click / tap two adjacent gems"),
+    makeGame("chain-reaction", "Chain Reaction", "Puzzle", "⚛️", "Set off a cascade and catch as many moving cells as possible.", "Click / tap to start"),
+    makeGame("number-sort", "Number Sort", "Puzzle", "🔢", "Reorder the numbers in the fewest moves you can.", "Click / tap tiles"),
+    makeGame("color-flood", "Color Flood", "Puzzle", "🎨", "Flood the board with one colour before you run out of moves.", "Click / tap a colour"),
+    makeGame("checkers", "Checkers", "Classic", "⚫", "Capture opposing pieces in a quick game of checkers.", "Click / tap a piece, then its destination"),
+    makeGame("battleship", "Battleship", "Classic", "⚓", "Find and sink the computer fleet on a hidden grid.", "Click / tap grid squares"),
+    makeGame("hangman", "Hangman", "Classic", "🪢", "Guess the hidden word before you run out of attempts.", "Keyboard / click letters"),
+    makeGame("blackjack", "Blackjack", "Classic", "🃏", "Beat the dealer by getting as close to 21 as possible.", "Click / tap Hit or Stand"),
+    makeGame("rock-paper-scissors", "Rock Paper Scissors", "Classic", "✊", "Choose your throw and outsmart the computer.", "Click / tap a choice"),
+    makeGame("simon-says", "Simon Says", "Classic", "🟢", "Memorise and repeat the growing colour sequence.", "Click / tap the coloured pads"),
+    makeGame("dice-roller", "Dice Roller", "Classic", "🎲", "Roll, hold, and score dice across five rounds.", "Click / tap dice and controls"),
+  ],
 ];
 
 export const CATEGORIES: Category[] = ["Arcade", "Action", "Puzzle", "Classic"];

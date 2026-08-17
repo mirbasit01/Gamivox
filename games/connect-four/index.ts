@@ -21,7 +21,7 @@ class ConnectFourScene extends Phaser.Scene {
   private over = false;
   private busy = false;
   private boardY = HUD; // top of board area
-
+  private boardHeight = ROWS * CELL;
   constructor() {
     super("connect4");
   }
