@@ -111,6 +111,9 @@ class ConnectFourScene extends Phaser.Scene {
     if (r !== -1) this.board[r][col] = 2;
   }
 
+
+
+  
   /** Check 4-in-a-row through cell (r,c) for mark. */
   private isWinAt(r: number, c: number, mark: Cell): boolean {
     const dirs = [
